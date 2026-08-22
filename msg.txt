@@ -1,0 +1,1 @@
+[Release v2.0.3: Native Xray VPN for Firefox] Added XHTTP REALITY support
