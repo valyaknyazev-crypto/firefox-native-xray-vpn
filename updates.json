@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "vpnproxy@antigravity.dev": {
+      "updates": [
+        {
+          "version": "2.0.0",
+          "update_link": "https://github.com/valyaknyazev-crypto/firefox-native-xray-vpn/releases/download/v2.0.0/vpn-extension.xpi"
+        }
+      ]
+    }
+  }
+}
