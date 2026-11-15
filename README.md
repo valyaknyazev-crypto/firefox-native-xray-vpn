@@ -1,5 +1,12 @@
 # Firefox Native Xray VPN
 
+[![Firefox Add-on](https://img.shields.io/badge/Firefox-115.0%2B-orange.svg?logo=firefox-browser)](https://www.mozilla.org/firefox/)
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
+[![Xray-core](https://img.shields.io/badge/Core-Xray--core-red.svg?logo=xray)](https://github.com/XTLS/Xray-core)
+[![TypeScript](https://img.shields.io/badge/Language-TypeScript-3178C6.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![React 18](https://img.shields.io/badge/UI-React%2018-61DAFB.svg?logo=react)](https://react.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 Расширение для Mozilla Firefox, которое направляет трафик браузера в локальный демон Xray-core через Firefox Native Messaging.
 
 В отличие от стандартных расширений только с HTTP и SOCKS5, этот клиент работает с протоколами VLESS, VMess и Trojan, а также с маскировкой трафика Reality и Vision прямо из браузера, без сторонних десктопных программ.
