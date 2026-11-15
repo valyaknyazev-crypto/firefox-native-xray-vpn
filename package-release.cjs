@@ -110,6 +110,13 @@ function createZip(entries, outputPath) {
   eocd.writeUInt16LE(0, 20); // comment length
 
   const finalBuf = Buffer.concat([...localHeaders, ...centralDirHeaders, eocd]);
+  try {
+    if (fs.existsSync(outputPath)) {
+      fs.unlinkSync(outputPath);
+    }
+  } catch (e) {
+    // Ignore unlink error
+  }
   fs.writeFileSync(outputPath, finalBuf);
   console.log(`Created ${outputPath} (${finalBuf.length} bytes, ${fileRecords.length} files)`);
 }
@@ -120,8 +127,9 @@ function collectFiles(baseDir, relativeTo = baseDir) {
 
   for (const entry of entries) {
     // EXCLUDE AGENT JUNK & ARTIFACTS
-    if (['.scratch', '.agents', '.git', 'node_modules', 'dist-installer', 'release'].includes(entry.name)) continue;
-    if (entry.name.endsWith('.md') && ['learning_proposal.md', 'architecture_report.md', 'handoff.md', 'task.md', 'implementation_plan.md', 'walkthrough.md'].includes(entry.name)) continue;
+    if (['.scratch', '.agents', '.git', 'node_modules', 'dist-installer', 'release', 'agents'].includes(entry.name)) continue;
+    if (entry.name.endsWith('.md') && ['learning_proposal.md', 'architecture_report.md', 'handoff.md', 'task.md', 'implementation_plan.md', 'walkthrough.md', 'AGENTS.md', 'CONTEXT.md'].includes(entry.name)) continue;
+    if (entry.name === 'msg.txt') continue;
     
     const fullPath = path.join(baseDir, entry.name);
     if (entry.isDirectory()) {
@@ -149,6 +157,7 @@ const sourceItems = [
   'src-daemon',
   'src-daemon-go',
   'public',
+  'assets',
   'index.html',
   'options.html',
   'package.json',
@@ -157,9 +166,8 @@ const sourceItems = [
   'tsconfig.json',
   'vite.config.ts',
   'README.md',
-  'CONTEXT.md',
   'LICENSE',
-  'docs',
+  'docs/adr',
   'install-daemon.ps1',
   'uninstall-daemon.ps1',
   'updates.json',
